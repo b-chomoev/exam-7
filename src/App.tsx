@@ -57,6 +57,11 @@ const App = () => {
         }, 0);
     };
 
+    const deleteItem = (item: string) => {
+        const copyItem = orders.filter(i => i.name !== item);
+        setOrders(copyItem);
+    };
+
     const itemButton = Menu.map(i => (
         <Items key={i.id} price={i.price} name={i.name} image={i.image} onAddButton={() => getItemInfo(i.name)}/>
     ));
@@ -66,6 +71,7 @@ const App = () => {
                       name={item.name}
                       count={item.count}
                       price={item.price}
+                      onDeleteItem={() => deleteItem(item.name)}
         />
     ));
 
